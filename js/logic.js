@@ -15,12 +15,35 @@ var last_week_url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/a
 d3.json(last_week_url, function (response) {
 
     console.log(response.features);
+    
+    // The following function is only returning the default. 
+    // Unsure if that's because the magnitudes in the features are all too small
+    // or if it isn't working properly. Find a way to scale the color classes to
+    // the existing magnitude range in the data...
+    // Possibly replace witha chloropleth layer?
+    function magColor(mag) {
+        switch (mag) {
+            case (mag > 6.66):
+            return "red";
+            case (mag > 3.33):
+                return "orange";
+            default:
+                return "yellow";
+        }
+    }
+// Test choropleth version
+    var earthquakes = L.choropleth(response.features, {
+        valueProperty: properties.mag
+    })
 
+
+// Test geoJSON version
     var earthquakes = L.geoJSON(response.features, {
         // onEachFeature: function (feature, layer) {
-            style: function(feature) {
+        
+        style: function(feature) {
                 // Need to write a function for specifying color
-                return {color: feature.properties.mag,
+                return {color: magColor(feature.properties.mag),
                 }
             },
             pointToLayer: function(feature, latlng){
