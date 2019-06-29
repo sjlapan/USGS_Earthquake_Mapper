@@ -59,15 +59,43 @@ d3.json(last_week_url, function (response) {
 })
 
 
-var legend = L.control({position: "bottomright"});
-legend.onAdd = function() {
-    var legendInfo = `<h1>Earthquake Magnitude</h1>
-    <div>
-      <div class="min">${magMin}</div>
-      <div class="max">${magMax}</div>
-    </div>
-  `;
-}
+// var legend = L.control({position: "bottomright"});
+// legend.onAdd = function() {
+//     // Add boundaries
+//     earthquakes.options.limits;
+//     var min = earthquakes.options.limits[0];
+//     var max = earthquakes.options.limits[earthquakes.options.limits.length-1];
+    
+    
+    
+//     var legendInfo = `<h1>Earthquake Magnitude</h1>
+//     <div>
+//       <div class="min">${magMin}</div>
+//       <div class="max">${magMax}</div>
+//     </div>
+//   `;
+
+//   earthquakes.options.colors;
+
+//   var colorList = earthquakes.options.colors.map( colors=> {
+//     return `<li style="background-color:${colors}"></li>`
+//   })
+//   // return: DOM Element
+//   var div = L.DomUtil.create("div", "info legend") // Name of the element, class of the element
+  
+//   div.innerHTML = `
+//   ${legendInfo}
+//   <ul>
+//   ${colorList.join("")}
+//   </ul>`
+//   return div;
+// };  
+
+
+
+// // Adding legend to the map
+// legend.addTo(myMap);
+
 
 
 
@@ -94,6 +122,3 @@ var myMap = L.map("map", {
 })
 });
 
-//     var quake_layer = L.geoJSON().addTo(map);
-//     quake_layer.addData(response); 
-// }
